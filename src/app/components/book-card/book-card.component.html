@@ -1,4 +1,4 @@
 <div class="container" (click)="selectBook()">
-    <img src="{{imgUrl()}}" alt="">
-    <span>{{title()}}</span>
+    <img src="{{book()?.formats?.['image/jpeg']}}" alt="">
+    <span>{{book()?.title}}</span> 
 </div>
