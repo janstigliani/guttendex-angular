@@ -6,9 +6,10 @@ import { Book } from '../../model/book';
 })
 export class BookService {
 
-  readonly BASE_URL = "https://gutendex.com/books/?page="
-  page = signal(1)
-  books = signal<Book[]>([])
+  readonly BASE_URL = "https://gutendex.com/books/?page=";
+  page = signal(1);
+  books = signal<Book[]>([]);
+  selectedBook = signal<Book|undefined>(undefined);
 
   constructor() {
     effect(() => {
@@ -24,6 +25,14 @@ export class BookService {
     .then(data => this.books.update(previousArray => previousArray.concat(data.results)))
     .catch(err => console.log(err))
 
+  }
+
+  selectedBookById(id: number) {
+    console.log(id)
+    const selected = this.books().find(book => book.id === id);
+    if (selected) {
+      this.selectedBook.set(selected);
+    }
   }
 
 }

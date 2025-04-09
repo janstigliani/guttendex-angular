@@ -3,6 +3,7 @@
     *ngFor="let book of bookServ.books()"
     image-url="{{book.formats['image/jpeg']}}"
     book-title="{{book.title}}"
+    book-id={{book.id}}
     ></app-book-card>
     <button (click)="getMoreBooks()">more...</button>
 </div>
